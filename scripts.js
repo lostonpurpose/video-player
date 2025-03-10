@@ -1,7 +1,12 @@
 // get our elements
-player = document.querySelector(".player");
-playButton = document.querySelector(".player__button");
-videoPlaying = document.querySelector(".player__video");
+const player = document.querySelector(".player");
+const playButton = player.querySelector(".toggle");
+const videoPlaying = player.querySelector(".viewer");
+const progress = player.querySelector(".progress__filled");
+const progressBar = player.querySelector(".viewer");
+const volume = player.querySelector(".slider");
+const skipButtons = player.querySelectorAll(".[data-skip]");
+const ranges = player.querySelectorAll(".player__slider");
 
 
 
