@@ -7,6 +7,7 @@ const progressBar = player.querySelector(".viewer");
 const volume = player.querySelector(".slider");
 const skipButtons = player.querySelectorAll("[data-skip]");
 const ranges = player.querySelectorAll(".player__slider");
+const mute = player.querySelector(".mute");
 
 
 
@@ -31,6 +32,11 @@ function skip() {
     video.currentTime += parseFloat(this.dataset.skip);
 }
 
+function handleRangeUpdate() {
+    video[this.name] = this.value * 2
+    video[this.name] === 0 ? mute.innerText = "🔇" : mute.innerText = "🔊"
+};
+
 
 // hook up our event listeners
 playButton.addEventListener('click', playVideo);
@@ -40,9 +46,10 @@ video.addEventListener('play', togglePlayButton);
 video.addEventListener('pause', togglePlayButton);
 
 
-
 skipButtons.forEach(button => {
     button.addEventListener('click', skip)
-    button.addEventListener('arrowLeft', skip)
 });
 
+ranges.forEach(item => {
+    item.addEventListener('change', handleRangeUpdate)
+});

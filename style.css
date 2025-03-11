@@ -51,7 +51,7 @@ body {
   outline: 0;
   padding: 0;
   cursor: pointer;
-  max-width: 50px;
+  max-width: 30px;
 }
 
 .player__button:focus {
