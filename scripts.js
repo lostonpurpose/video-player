@@ -14,11 +14,9 @@ const ranges = player.querySelectorAll(".player__slider");
 function playVideo() {
     if (video.paused === true) {
         video.play()
-        
     }
     else {
         video.pause()
-        
     }
 };
 
@@ -26,8 +24,23 @@ function togglePlayButton() {
     this.paused ? playButton.innerText = "►" : playButton.innerText = "❚❚"
 };
 
+function skip() {
+    console.log(this.dataset.skip)
+    video.currentTime += parseFloat(this.dataset.skip);
+}
+
+
 // hook up our event listeners
 playButton.addEventListener('click', playVideo);
+video.addEventListener('click', playVideo);
+document.addEventListener('keyup', playVideo);
 video.addEventListener('play', togglePlayButton);
 video.addEventListener('pause', togglePlayButton);
-video.addEventListener('click', playVideo);
+
+
+
+skipButtons.forEach(button => {
+    button.addEventListener('click', skip)
+    button.addEventListener('arrowLeft', skip)
+});
+
