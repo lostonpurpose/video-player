@@ -11,13 +11,15 @@ const ranges = player.querySelectorAll(".player__slider");
 
 
 // make our functions
-function playVideo() {
+function playVideo(e) {
+    if (e.type === 'keyup' && e.key === ' ' || e.type === 'click') {
+
     if (video.paused === true) {
-        video.play()
-    }
+        video.play()    }
     else {
         video.pause()
     }
+}
 };
 
 function togglePlayButton() {
