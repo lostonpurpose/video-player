@@ -14,13 +14,20 @@ const ranges = player.querySelectorAll(".player__slider");
 function playVideo() {
     if (video.paused === true) {
         video.play()
+        
     }
     else {
         video.pause()
+        
     }
 };
 
+function togglePlayButton() {
+    this.paused ? playButton.innerText = "►" : playButton.innerText = "❚❚"
+};
 
 // hook up our event listeners
 playButton.addEventListener('click', playVideo);
+video.addEventListener('play', togglePlayButton);
+video.addEventListener('pause', togglePlayButton);
 video.addEventListener('click', playVideo);
