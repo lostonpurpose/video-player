@@ -51,7 +51,7 @@ body {
   outline: 0;
   padding: 0;
   cursor: pointer;
-  max-width: 30px;
+  max-width: 50px;
 }
 
 .player__button:focus {
@@ -101,7 +101,7 @@ body {
   width: 50%;
   background: #ffc600;
   flex: 0;
-  flex-basis: 50%;
+  flex-basis: 0%;
 }
 
 /* unholy css to style input type="range" */

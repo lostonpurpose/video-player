@@ -2,8 +2,8 @@
 const player = document.querySelector(".player");
 const playButton = player.querySelector(".toggle");
 const video = player.querySelector(".viewer");
-const progress = player.querySelector(".progress__filled");
-const progressBar = player.querySelector(".viewer");
+const progress = player.querySelector(".progress");
+const progressBar = player.querySelector(".progress__filled");
 const volume = player.querySelector(".slider");
 const skipButtons = player.querySelectorAll("[data-skip]");
 const ranges = player.querySelectorAll(".player__slider");
@@ -37,6 +37,15 @@ function handleRangeUpdate() {
     video[this.name] === 0 ? mute.innerText = "🔇" : mute.innerText = "🔊"
 };
 
+function handleProgress() {
+    const percent = (video.currentTime / video.duration) * 100;
+    progressBar.style.flexBasis = `${percent}%`
+};
+
+function scrub(e) {
+    video.currentTime = (e.offsetX / progress.offsetWidth) * video.duration;
+};
+
 
 // hook up our event listeners
 playButton.addEventListener('click', playVideo);
@@ -53,3 +62,6 @@ skipButtons.forEach(button => {
 ranges.forEach(item => {
     item.addEventListener('change', handleRangeUpdate)
 });
+
+video.addEventListener('timeupdate', handleProgress);
+progress.addEventListener('click', scrub);
